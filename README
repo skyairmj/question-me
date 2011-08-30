@@ -1,0 +1,8 @@
+To Set Up Dev Env:
+The recommended way is to use hub script under the root directory. For instance, to initialize the environment, please use "./hub init"
+
+Or, you can also set up dev env manually as follows:
+1. install nvm to manage node.js versions
+   https://github.com/creationix/nvm
+2. install node.js v0.4.11 & npm for development
+   nvm install v0.4.11
