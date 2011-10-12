@@ -1,34 +1,41 @@
 #! /bin/sh
-if [ $# -lt 1 ]; then
-	version
-	return
-fi
-
-case $1 in
-	"init")
-		init
-	;;
-	"version")
-		echo "Hub version 0.1 ALPHA"
-	;;
-	*)
-	;;
-esac
-
 init()
 {
-	if [! `which wget`]; then
+	if [ ! `which wget` ]; then
 		echo "Error: Please install wget first"
 	fi
-	if [! `which git`]; then
+	if [ ! `which git` ]; then
 		echo "Error: Please install git first"
 	fi
 
 	git clone git://github.com/creationix/nvm.git ~/.nvm
-
-	echo 'add nvm into your bash shell path'
+	echo 'nvm downloaded into your home folder'
+	
 	echo '. ~/.nvm/nvm.sh'>>~/.bash_profile
+	echo 'nvm added into your bash shell path'
+
 	source ~/.bash_profile
 
-	nvm install v0.4.11
+	nvm install latest
 }
+
+hub()
+{
+	if [ $# -lt 1 ]; then
+        	hub version
+        	return                                                                                                   
+	fi
+
+	case $1 in
+        	"init")
+                	init
+        	;;
+        	"version")
+                	echo "Hub version 0.1 ALPHA"
+        	;;
+        	*)
+        	;;
+	esac
+}
+
+hub ls default >/dev/null 2>&1 && hub use default >/dev/null
